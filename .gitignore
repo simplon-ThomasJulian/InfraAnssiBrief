@@ -1,0 +1,8 @@
+#
+ansible.cfg
+terraform.tfsate
+terraform.tfstate.backup
+variables.tf
+.terraform/*
+.terraform.lock.hcl
+.git/*

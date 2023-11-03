@@ -1,0 +1,5 @@
+---
+- src: https://github.com/simplon-ThomasJulian/roleanssibrief
+  name: role_anssi
+  scm: git
+  version: main

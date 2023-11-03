@@ -1,0 +1,28 @@
+---
+- name: launch anssi reco and get report
+  hosts: thom-machine_4425
+  remote_user: adminuser
+  become: true
+  gather_facts: true
+  roles:
+    - role: "role_anssi"
+      ignore_errors: true
+  tasks:
+    - name: Install SCAP
+      yum:
+        name:
+          - openscap-scanner
+          - scap-security-guide
+        state: present
+
+    - name: cmd line report
+      ansible.builtin.command:
+        cmd: oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_anssi_bp28_minimal --results-arf resultstest.xml --report report.html /usr/share/xml/scap/ssg/content/ssg-rhel8-ds.xml
+      ignore_errors: true
+
+    - name: Save audit report
+      fetch:
+        src: /home/adminuser/report.html
+        dest: /home/thomas/Documents/durdur/ansible/report.html
+        flat: yes
+      ignore_errors: true

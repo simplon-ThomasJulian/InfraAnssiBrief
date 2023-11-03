@@ -23,6 +23,6 @@
     - name: Save audit report
       fetch:
         src: /home/adminuser/report.html
-        dest: /home/thomas/Documents/durdur/ansible/report.html
+        dest: /home/thomas/Documents/InfraAnssiBrief/report.html
         flat: yes
       ignore_errors: true
